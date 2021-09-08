@@ -1,18 +1,17 @@
-console.log('hello everyone'); 
-// variables
+// Rock Paper Scissors Project 
 
-// functions
-function game () {
+function game () { // encompasses entire game of rock paper scissors 
   let playerScore = 0, computerScore = 0; 
-  for (round = 0; round < 5; round++) {
+  for (round = 0; round < 5; round++) { // function determining number of rounds 
     playRound(); 
-    if (playerWins) {
+    if (playerWins) { // if statement to increment score by one 
       playerScore++;
   } else if (computerWins) {
       computerScore++;
   }
  } 
- if (playerScore > computerScore) {
+ // at the end of the five rounds the score is tally'd and a winner is determined 
+ if (playerScore > computerScore) { 
   console.log('You Won!');
 } else if (computerScore > playerScore) {
   console.log('You Lost!'); 
@@ -32,14 +31,15 @@ function computerPlay () {
     return('scissors'); 
   }
 }
-// a function determining the winner of a round 
+
+// a function encompassing every action in a single round
 function playRound () {
-  const playerSelection = prompt('Rock Paper or Scissors?').toLowerCase(); 
+  const playerSelection = prompt('Rock Paper or Scissors?').toLowerCase(); // text input window pops up 
   const computerSelection = computerPlay(); 
-  console.log('user:' + playerSelection);
+  console.log('user:' + playerSelection); // prints selections 
   console.log('computer:' + computerSelection);
 
-  if (playerSelection == 'rock' && computerSelection == 'paper') {
+  if (playerSelection == 'rock' && computerSelection == 'paper') { // rock paper scissors conditionals
 
     console.log('Paper beats rock, computer wins!'); 
     computerWins = true; 
