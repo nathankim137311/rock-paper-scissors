@@ -1,10 +1,10 @@
 // Rock Paper Scissors Project 
 
-function game () { // encompasses entire game of rock paper scissors 
+function game () { 
   let playerScore = 0, computerScore = 0; 
-  for (round = 0; round < 5; round++) { // function determining number of rounds 
+  for (round = 0; round < 5; round++) { 
     playRound(); 
-    if (playerWins) { // if statement to increment score by one 
+    if (playerWins) { 
       playerScore++;
   } else if (computerWins) {
       computerScore++;
@@ -20,7 +20,6 @@ function game () { // encompasses entire game of rock paper scissors
 }
 }
 
-// random number from 1 - 3 generator printing rock paper and scissors
 function computerPlay () {
   let randomNumber = Math.floor(Math.random()*3) + 1;
   if (randomNumber == 1) {
@@ -32,14 +31,13 @@ function computerPlay () {
   }
 }
 
-// a function encompassing every action in a single round
 function playRound () {
-  const playerSelection = prompt('Rock Paper or Scissors?').toLowerCase(); // text input window pops up 
+  const playerSelection = prompt('Rock Paper or Scissors?').toLowerCase(); 
   const computerSelection = computerPlay(); 
-  console.log('user:' + playerSelection); // prints selections 
+  console.log('user:' + playerSelection); 
   console.log('computer:' + computerSelection);
 
-  if (playerSelection == 'rock' && computerSelection == 'paper') { // rock paper scissors conditionals
+  if (playerSelection == 'rock' && computerSelection == 'paper') { 
 
     console.log('Paper beats rock, computer wins!'); 
     computerWins = true; 
@@ -83,5 +81,4 @@ function playRound () {
   }
 }
 
-//printing player, computer and game results
 game(); 
