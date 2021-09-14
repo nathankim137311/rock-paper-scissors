@@ -16,24 +16,32 @@ const btns = document.querySelectorAll('button');
 // event listeners
 btns.forEach(btn => btn.addEventListener('click', (e) => {
   playerSelection = e.target.id;
-  userDisplay.textContent = playerSelection; 
-  playRound(playerSelection);
-  getResult()
+  userDisplay.textContent = playerSelection;
+  computerSelection = computerPlay();  
+  let roundResult = playRound(playerSelection, computerSelection);
+  gameScore(roundResult);  
 }));
 
 // functions
+function gameScore (roundResult) { 
+  if (roundResult === 'draw') {
+    playerScoreDisplay + 0; 
+    computerScoreDisplay + 0;
+  } else if (roundResult === 'win') {
+    playerScoreDisplay++; 
+  } else if (roundResult === 'lose') {
+    computerScoreDisplay++;
+  }
+  if (computerScoreDisplay === 5) {
+    finalResultDisplay.textContent = 'Overall Winner'; 
+    resultDisplay.textContent = 'Computer Wins'; 
+  } else if (playerScoreDisplay === 5) {
+    finalResultDisplay.textContent = 'Overall Winner'; 
+    resultDisplay.textContent = 'Conglaturations You Win'; 
+  }
+}
 
-// at the end of the five rounds the score is tally'd and a winner is determined 
-  //if (playerScore > computerScore) { 
-  //  finalResultDisplay.innerHTML.replace('Result:', 'Overall Winner'); 
-  //  resultDisplay.textContent = 'You Won!';
-  //} else if (computerScore > playerScore) {
-  //  finalResultDisplay.innerHTML.replace('Result:', 'Overall Winner'); 
-  //  resultDisplay.textContent = 'You Lost!'; 
-  //} else {
-  //  finalResultDisplay.innerHTML.replace('Result:', 'Overall Winner'); 
-  //  resultDisplay.textContent = 'It\'s a Tie! No one wins';
-  //}
+
 
 function computerPlay () {
   let randomNumber = Math.floor(Math.random()*3) + 1;
@@ -50,16 +58,18 @@ function computerPlay () {
   return computerSelection; 
 }
 
-function playRound (playerSelection) { 
-  const computerSelection = computerPlay();   
+function playRound (playerSelection, computerSelection) {   
+  let draw = 'draw';
+  let playerWinRound = 'win'; 
+  let computerWinRound = 'lose'; 
   if (playerSelection === computerSelection) { 
-    resultDisplay.textContent = 'It\'s a draw!'; 
-    computerScoreDisplay += 0; 
+    resultDisplay.textContent = 'It\'s a draw!';
+    return draw;  
   } else if (playerSelection == 'paper' && computerSelection == 'rock' || playerSelection == 'rock' && computerSelection == 'scissors' || playerSelection == 'scissors' && computerSelection == 'paper') {
     resultDisplay.textContent = 'You Win'; 
-    playerScoreDisplay += 1; 
+    return playerWinRound; 
   } else if (playerSelection == 'paper' && computerSelection == 'scissors' ||playerSelection == 'rock' && computerSelection == 'paper' || playerSelection == 'scissors' && computerSelection == 'rock') {
-    resultDisplay.textContent = 'You Lose';
-    computerScoreDisplay += 1; 
+    resultDisplay.textContent = 'You lose'; 
+    return computerWinRound; 
   }
 }
