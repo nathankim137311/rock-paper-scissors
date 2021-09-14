@@ -1,11 +1,10 @@
 // Rock Paper Scissors Project 
 
 // variables
-const playerScore = document.querySelector('#player-score');
-const computerScore = document.querySelector('#computer-score'); 
-
-let playerScoreDisplay = playerScore.textContent = 0;
-let computerScoreDisplay = computerScore.textContent = 0; 
+const playerCounter = document.querySelector('#player-score');
+const computerCounter = document.querySelector('#computer-score'); 
+let playerScore = 0; 
+let computerScore = 0; 
 
 const computerDisplay = document.querySelector('#computer'); 
 const userDisplay = document.querySelector('#user');
@@ -25,19 +24,22 @@ btns.forEach(btn => btn.addEventListener('click', (e) => {
 // functions
 function gameScore (roundResult) { 
   if (roundResult === 'draw') {
-    playerScoreDisplay + 0; 
-    computerScoreDisplay + 0;
+    playerScore + 0; 
+    computerScore + 0;
   } else if (roundResult === 'win') {
-    playerScoreDisplay++; 
+    playerScore++; 
+    playerCounter.textContent = playerScore; 
   } else if (roundResult === 'lose') {
-    computerScoreDisplay++;
+    computerScore++;
+    computerCounter.textContent = computerScore; 
   }
-  if (computerScoreDisplay === 5) {
+
+  if (computerScore === 5) {
     finalResultDisplay.textContent = 'Overall Winner'; 
     resultDisplay.textContent = 'Computer Wins'; 
-  } else if (playerScoreDisplay === 5) {
+  } else if (playerScore === 5) {
     finalResultDisplay.textContent = 'Overall Winner'; 
-    resultDisplay.textContent = 'Conglaturations You Win'; 
+    resultDisplay.textContent = 'Conglaturations You Win';
   }
 }
 
