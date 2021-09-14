@@ -3,15 +3,13 @@
 // variables
 const playerCounter = document.querySelector('#player-score');
 const computerCounter = document.querySelector('#computer-score'); 
-let playerScore = 0; 
-let computerScore = 0; 
-
 const computerDisplay = document.querySelector('#computer'); 
 const userDisplay = document.querySelector('#user');
 const resultDisplay = document.querySelector('#result');
 const finalResultDisplay = document.querySelector('#game-result');   
 const btns = document.querySelectorAll('button'); 
-
+let playerScore = 0; 
+let computerScore = 0; 
 // event listeners
 btns.forEach(btn => btn.addEventListener('click', (e) => {
   playerSelection = e.target.id;
@@ -42,8 +40,6 @@ function gameScore (roundResult) {
     resultDisplay.textContent = 'Conglaturations You Win';
   }
 }
-
-
 
 function computerPlay () {
   let randomNumber = Math.floor(Math.random()*3) + 1;
